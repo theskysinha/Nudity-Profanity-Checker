@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'text_nsfw.dart';
-import 'image_nsfw.dart';
+import 'view/ui/pages/profanity_checker_view.dart';
 
 void main() => runApp(const MyApp());
 
@@ -21,7 +20,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: TextNSFW(),
+      body: TextNSFWView(),
     );
   }
 }
