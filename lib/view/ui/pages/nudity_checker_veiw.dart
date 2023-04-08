@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nsfw_checker_app/controller/image_nsfw_controller.dart';
 import 'package:nsfw_checker_app/view/ui/pages/profanity_checker_view.dart';
-import '../../../model/image_model.dart';
 
 class ImageNSFWView extends StatefulWidget {
   const ImageNSFWView({Key? key});
@@ -10,7 +10,7 @@ class ImageNSFWView extends StatefulWidget {
 }
 
 class _ImageNSFWViewState extends State<ImageNSFWView> {
-  final ImageNSFWModel model = ImageNSFWModel();
+  final ImageNSFWController _controller = ImageNSFWController();
   bool _isLoading = false;
   String res = "";
 
@@ -25,7 +25,7 @@ class _ImageNSFWViewState extends State<ImageNSFWView> {
             child: Center(
               child: ElevatedButton(
                 onPressed: () async {
-                  await model.getImageGallery();
+                  await _controller.getImageGallery();
                   setState(() {});
                 },
                 child: Text("Choose Image from Gallery"),
@@ -34,7 +34,7 @@ class _ImageNSFWViewState extends State<ImageNSFWView> {
           ),
           ElevatedButton(
             onPressed: () async {
-              await model.getImageCamera();
+              await _controller.getImageCamera();
               setState(() {});
             },
             child: Text("Choose Image from Camera"),
@@ -44,7 +44,7 @@ class _ImageNSFWViewState extends State<ImageNSFWView> {
               setState(() {
                 _isLoading = true;
               });
-              res = await model.uploadImage(model.getImage());
+              res = await _controller.uploadImage(_controller.getImage());
               setState(() {
                 _isLoading = false;
               });
